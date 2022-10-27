@@ -2,34 +2,37 @@ package com.example;
 
 import java.util.List;
 
-public class Lion {
+public class Lion implements IFamily {
 
     boolean hasMane;
-    private Family family;
+    private final IFamily ifamily;
+    //public Lion (IFamily ifamily) {
+    //    this.ifamily = ifamily;
+   // }
 
-    public Lion(String sex) throws Exception {
+    public Lion(String sex, IFamily ifamily) throws Exception {
+        this.ifamily = ifamily;
         if ("Самец".equals(sex)) {
-            hasMane = true;
+            this.hasMane = true;
         } else if ("Самка".equals(sex)) {
-            hasMane = false;
+            this.hasMane = false;
         } else {
-            throw new Exception("Используйте допустимые значения пола животного - самей или самка");
+            throw new Exception("Используйте допустимые значения пола животного - самец или самка");
         }
     }
-
-    public Lion (Family family) {
-
-        this.family = family;
-    }
-   public void getKittensFamily() {
-
-        family.getKittens();
+    @Override
+   public int getKittens() {
+       return ifamily.getKittens();
    }
+
+
     public List<String> getFood() throws Exception {
-        return family.getFood("Хищник");
+        return ifamily.getFood();
     }
+
     public boolean doesHaveMane() {
 
         return hasMane;
     }
+
 }

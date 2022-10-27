@@ -2,35 +2,38 @@
 
 import java.util.List;
 
-public class Lion {
+public class Lion implements IFamily {
 
     boolean hasMane;
-    private Family family;
+    private final IFamily ifamily;
+    //public Lion (IFamily ifamily) {
+    //    this.ifamily = ifamily;
+   // }
 
-<span class="nc" id="L10">    public Lion(String sex) throws Exception {</span>
-<span class="nc bnc" id="L11" title="All 2 branches missed.">        if (&quot;Самец&quot;.equals(sex)) {</span>
-<span class="nc" id="L12">            hasMane = true;</span>
-<span class="nc bnc" id="L13" title="All 2 branches missed.">        } else if (&quot;Самка&quot;.equals(sex)) {</span>
-<span class="nc" id="L14">            hasMane = false;</span>
+<span class="fc" id="L13">    public Lion(String sex, IFamily ifamily) throws Exception {</span>
+<span class="fc" id="L14">        this.ifamily = ifamily;</span>
+<span class="fc bfc" id="L15" title="All 2 branches covered.">        if (&quot;Самец&quot;.equals(sex)) {</span>
+<span class="fc" id="L16">            this.hasMane = true;</span>
+<span class="fc bfc" id="L17" title="All 2 branches covered.">        } else if (&quot;Самка&quot;.equals(sex)) {</span>
+<span class="fc" id="L18">            this.hasMane = false;</span>
         } else {
-<span class="nc" id="L16">            throw new Exception(&quot;Используйте допустимые значения пола животного - самей или самка&quot;);</span>
+<span class="fc" id="L20">            throw new Exception(&quot;Используйте допустимые значения пола животного - самец или самка&quot;);</span>
         }
-<span class="nc" id="L18">    }</span>
+<span class="fc" id="L22">    }</span>
+    @Override
+   public int getKittens() {
+<span class="fc" id="L25">       return ifamily.getKittens();</span>
+   }
 
-<span class="nc" id="L20">    public Lion (Family family) {</span>
 
-<span class="nc" id="L22">        this.family = family;</span>
-<span class="nc" id="L23">    }</span>
-   public void getKittensFamily() {
-
-<span class="nc" id="L26">        family.getKittens();</span>
-<span class="nc" id="L27">   }</span>
     public List&lt;String&gt; getFood() throws Exception {
-<span class="nc" id="L29">        return family.getFood(&quot;Хищник&quot;);</span>
+<span class="fc" id="L30">        return ifamily.getFood();</span>
     }
+
     public boolean doesHaveMane() {
 
-<span class="nc" id="L33">        return hasMane;</span>
+<span class="fc" id="L35">        return hasMane;</span>
     }
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
