@@ -6,30 +6,21 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import java.util.Collections;
 import java.util.List;
 
 public class FelineTest {
 
-   //private final int kittensCount;
-
-
-
-   //public FelineTest (int kittensCount) {
-   //     this.kittensCount = kittensCount;
- // }
-
 
     @Before
     public void init() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
    }
 
    @Mock
    Animal animal;
 
     @Test
-    public void getEatTestFeline() throws Exception {
+    public void getEatTestFeline() {
         try {
         Feline feline = new Feline();
        Mockito.when(animal.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));

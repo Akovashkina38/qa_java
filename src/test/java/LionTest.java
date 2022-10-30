@@ -14,9 +14,9 @@ import java.util.List;
 @RunWith(Parameterized.class)
 public class LionTest {
 
-   private String sex;
-   private boolean hasMane;
-   private int kittensCount;
+   private final String sex;
+   private final boolean hasMane;
+   private final int kittensCount;
 
 
 
@@ -38,15 +38,15 @@ public class LionTest {
 
    @Before
    public void init() {
-      MockitoAnnotations.initMocks(this);
+      MockitoAnnotations.openMocks(this);
    }
 
    @Mock
    IFamily ifamily;
 
    @Test
-   public void getHasMane () throws Exception {
-      try {
+   public void getHasMane ()  {
+     try {
          Lion lion = new Lion(sex, ifamily);
          Assert.assertEquals(hasMane, lion.doesHaveMane());
       } catch (Exception exception) {
@@ -56,7 +56,7 @@ public class LionTest {
    }
 
    @Test
-   public void getFoodTestLion () throws Exception {
+   public void getFoodTestLion () {
       try {
          Lion lion = new Lion(sex, ifamily);
          Mockito.when(ifamily.getFood()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
@@ -68,7 +68,7 @@ public class LionTest {
    }
 
    @Test
-   public void getKittensTestLion () throws Exception {
+   public void getKittensTestLion ()  {
       try {
          Lion lion = new Lion(sex, ifamily);
          Mockito.when(ifamily.getKittens()).thenReturn(kittensCount);
